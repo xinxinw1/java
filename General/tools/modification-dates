@@ -1,0 +1,13 @@
+$ date '+%c'
+Mon 06 Jun 2016 10:56:16 AM EDT
+
+$ ls -lAR --time-style='+%c'
+.:
+total 64
+-rw-r--r-- 1 secret2008 secret2008  3145 Fri 02 Oct 2015 06:13:33 PM EDT Cons.java
+-rw-r--r-- 1 secret2008 secret2008 41888 Fri 02 Oct 2015 06:13:32 PM EDT $.java
+-rw-r--r-- 1 secret2008 secret2008     0 Mon 06 Jun 2016 10:54:26 AM EDT modification-dates
+-rw-r--r-- 1 secret2008 secret2008   940 Fri 02 Oct 2015 06:13:35 PM EDT Regex.java
+-rw-r--r-- 1 secret2008 secret2008   123 Fri 02 Oct 2015 06:13:37 PM EDT Rn.java
+-rw-r--r-- 1 secret2008 secret2008   911 Fri 02 Oct 2015 06:13:38 PM EDT Table.java
+-rw-r--r-- 1 secret2008 secret2008   712 Fri 02 Oct 2015 06:13:40 PM EDT Xarr.java
