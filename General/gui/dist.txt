@@ -1,0 +1,520 @@
+min = 1 2 1 1 1
+pref = 1 2 1 1 1
+max = 2 2 3 4 10
+
+20
+
+20/5 = 4
+
+dist(20, pref) = 5 6 5 5 5
+chkmax(...) = [[2 2 3 4 5], 3+4+2+1] = [[2 2 3 4 5], 10]
+dist(10, ...) =
+
+
+(def disteq (n a)
+  (if (no a) nil
+      (with ((q r) (qar n (len a))
+             d (dis1 (if (is r 0) q (+ q 1)) (car a)))
+        (cons (car d) (disteq (- n (cdr d)) (cdr a))))))
+
+(def dis1 (n a)
+  (let rslt (btwn (+ (pref a) n) (min a) (max a))
+    (cons rslt (- rslt (pref a)))))
+
+(def btwn (a min max)
+  (if (> a max) max
+      (< a min) min
+                a))
+
+function disteq(n, a){
+  if (nilp(a))return [];
+  var qr = qar(n, len(a));
+  var q = qr[0];
+  var r = qr[1];
+  var d = dis1(r === 0?q:q+1, car(a));
+  return cons(d[0], disteq(n-d[1], cdr(a)));
+}
+
+function dis1(n, a){
+  var rslt = btwn(pref(a)+n, min(a), max(a));
+  return cons(rslt, rslt-pref(a));
+}
+
+function btwn(a, min, max){
+  if (a > max)return max;
+  if (a < min)return min;
+  return a;
+}
+
+public static int[] disteq(int n, int[] pref, int[] min, int[] max){
+  int len = a.length;
+  int[] r = new int[len];
+  int items, quo, rem, curr, rslt;
+  for (int i = 0; i < len; i++){
+    items = len-i;
+    quo = n/items;
+    rem = n%items;
+    curr = rem === 0?quo:quo+1;
+    rslt = btwn(pref[i]+curr, min[i], max[i]);
+    r[i] = rslt;
+    n -= rslt-pref[i];
+  }
+  return r;
+}
+
+public static int btwn(int a, int min, int max){
+  if (a > max)return max;
+  if (a < min)return min;
+  return a;
+}
+
+
+min = 1 6 1 1 1
+pref = 1 4 2 1 1
+max = 2 20 3 4 10
+
+r = pref
+
+tot = 20
+todist = tot-sum(r) = 20-10 = 10
+each = todist/len(r) = 10/5 = 2
+
+r[0] = 2
+r = cdr(r)
+
+todist = todist-1 = 9
+each = todist/len(r) = 9/4 = 2
+ext = 9%4 = 1
+
+r[1] = 7
+r = cdr(r)
+
+
+2 7 3 4 3
+
+
+
+min = [1, 2, 3, 4, 5]
+pref = [4, 6, 2, 5, 5]
+max = [10, 20, 4, 5, 5]
+
+n = 10
+
+r = [4, 6, 3, 5, 5]
+n = 9
+
+inop = [t, t, f, f, f]
+
+next = [2, 1, "in"]
+r = [5, 7, 3, 5, 5]
+n = 7
+inop = [t, t, t, f, f]
+
+next = [2, 1, "out"]
+dx = 1*3
+dx <= n, ok
+r = [6, 8, 4, 5, 5]
+n = 4
+inop = [t, t, f, f, f]
+
+next = [0, 4]
+dx = 8
+dx > n
+numinop = 2
+change = n/2 = 2
+r = [8, 10, 4, 5, 5]
+
+return
+
+min = [1, 2, 20, 4, 5]
+pref = [4, 6, 2, 5, 5]
+max = [10, 20, 40, 5, 5]
+
+n = 10
+
+r = [4, 6, 20, 5, 5]
+n = -8
+
+inop = [t, t, f, t, f]
+next = [3, -1, "out"]
+numinop = 3
+dx = -1*numinop = -3
+|dx| <= |n|, ok
+r = [3, 5, 20, 4, 5]
+n = -5
+
+inop = [t, t, f, f, f]
+next = [0, -2, "out"]
+numinop = 2
+dx = -2*2 = -4
+|dx| <= |n|, ok
+r = [1, 3, 20, 4, 5]
+n = -1
+
+inop = [f, t, f, f, f]
+next = [1, -1, "out"]
+numinop = 1
+dx = -1*1 = -1
+|dx| <= |n|, ok
+r = [1, 2, 20, 4, 5]
+n = 0
+
+return
+
+min = [4, 2, 3, 1, 5]
+pref = [5, 6, 8, 3, 2]
+max = [5, 6, 8, 3, 10]
+
+n = 10
+
+r = [5, 6, 8, 3, 5]
+n = 7
+
+inop = [f, f, f, f, f]
+nextin = 4
+inop = [f, f, f, f, t]
+next = [4, 5]
+numinop = 1
+dx = 1*5 = 5
+|dx| <= |n|, ok
+r = [5, 6, 8, 3, 10]
+n = 2
+
+inop = [f, f, f, f, f]
+nextin = -1
+
+return
+
+(def dsteq (n r mn mx)
+  (if (is n 0) r
+      (with (left (if (> n 0) (lef r mx) (nlef r mn))
+             inop (map [isn _ 0] left))
+          (if (all nil inop) r
+              (with (next (min (cmpr < abs) left)
+                     dx (* next (cnt ~no inop)))
+                (if (< (abs dx) (abs n))
+                      (dsteq (- n dx) (dstt next r inop) mn mx)
+                    (dstt n r inop)))))))
+
+(def lef (a b)
+  (if (lis? a) (if (lis? b) (map lef a b)
+                            (map [lef _ b] a))
+      (lis? b) (map [lef a _] b)
+               (if (< a b) (- b a) 0)))
+
+(def nlef (a b)
+  (if (or (lis? a) (lis? b))
+        (map - (lef b a))
+      (- (lef b a))))
+
+a = [1, 2, -1]
+
+map(pos?, a) -> [true, true, false]
+
+public int[] toarr(ArrayList<Integer> a){
+  int[] r = new int[a.size()];
+  for (int i = 0; i < a.size(); i++){
+    r[i] = a.get(i);
+  }
+  return r;
+}
+
+      
+(def dst+ (n r mx)
+  (with (left (map - mx r)
+         inop (map [isn _ 0] left))
+    (if (all nil inop) r
+        (with (next (min (cmpr < abs) left)
+               dx (* next (cnt ~no inop)))
+          (if (< (abs dx) (abs n))
+                (dst+ (- n dx) (dstt next r inop) mx)
+              (dstt n r inop)))))))
+
+(def dst- (n r mn)
+  (let inop (lefbol mn r)
+    (if (all nil inop) r
+        (with (next (minlef mn r)
+               dx (* next (cnt ~no inop)))
+          (if (< dx n)
+                (dst- (- n dx) (dstt (- next) r inop) mn)
+              (dstt (- n) r inop)))))))
+
+
+
+
+
+(def dsteq (n pref min max)
+  (let r (map btwn pref min max)
+    (+= n (map - r pref))
+    (if (> n 0) (dst+ n r 0 pref min max)
+        (< n 0) (dst- (- n) r 0 pref min max)
+        r)))
+
+(def dst+ (n r chng prf mn mx)
+  (with (und (dund chng prf mn))
+         bund (lefbol und)
+         bmax (lefbol r mx)
+         inop (map and bmax (map not bund)))
+    (if (all nil inop)
+          (if (all nil bund) r
+              (dst+ n r (+ chng (minlef und)) prf mn mx)))
+        (with (next (min (minlef und) (minlef r mx))
+               dx (* (cnt ~no inop) next))
+          (if (<= (abs dx) (abs n))
+                (dst+ (- n dx) (dstt next r inop) (+ chng next) prf mn mx)
+              (dstt n r inop)))))
+
+(def dst- (n r chng prf mn mx)
+  (with (ovr (dovr chng prf mx))
+         bovr (lefbol ovr)
+         bmin (lefbol r mn)
+         inop (map and bmin (map not bovr)))
+    (if (all nil inop)
+          (if (all nil bovr) r
+              (dst+ n r (+ chng (minlef ovr)) prf mn mx)))
+        (with (next (min (minlef ovr) (minlef mn r))
+               dx (* (cnt ~no inop) next))
+          (if (<= (abs dx) (abs n))
+                (dst- (- n dx) (dstt (- next) r inop) (+ chng next) prf mn mx)
+              (dstt (- n) r inop)))))
+
+(def dstt (n a p)
+  (with (num (cnt ~no p)
+         (quo rm) (qr n num))
+    ((afn (a p rm)
+       (if (no a) nil
+           (cons (if (car p) (+ (car a) quo (sgn rm))
+                             (car a))
+                 (self (cdr a)
+                       (cdr p)
+                       (if (car p) (- rm (sgn rm))
+                                   rm)))))
+     a p rm)))
+
+(def sgn (a)
+  (if (> a 0) 1
+      (< a 0) -1
+              0))
+
+(def lef (a b)
+  (if (lis? a) (if (lis? b) (map lef a b)
+                            (map [lef _ b] a))
+      (lis? b) (map [lef a _] b)
+               (if (< a b) (- b a) 0)))
+
+(def lefs (a b)
+  (if (no b) (keep [> _ 0] a)
+             (lefs (lef a b))))
+
+(def minlef (a b)
+  (if (no b) (min (lefs a))
+             (minlef (lef a b))))
+
+(def lefbol (a b)
+  (if (no b) (map pos? a)
+             (lefbol (lef a b))))
+
+(def dund (chng prf mn)
+  (lef chng (lef prf mn)))
+
+(def dovr (chng prf mx)
+  (lef chng (lef mx prf)))
+
+(def premin (chng prf mn)
+  (lefbol (dund chng prf mn)))
+  
+(def premax (chng prf mx)
+  (lefbol (dovr chng prf mx)))
+
+(def nxtmin (chng prf mn)
+  (minlef (dund chng prf mn)))
+  
+(def nxtmax (r mx)
+  (minlef r mx))
+
+(def cnt (x a)
+  ((rfn cnt (x a n)
+     (if (no a) n
+         (cnt x (cdr a) (if (x (car a)) (+ n 1) n))))
+   (tfn x) a 0))
+
+(def mapt (f a p)
+  (map (fn (a p) (if p (f a) a)) a p))
+
+
+
+#|(def nxtmax (r mx)
+  (min (trues (fn (a m) (if (< a m) (- m a))) r mx)))|#
+
+#|(def premin (chng prf mn)
+  (map (fn (p m) (if (< p m) (> (- m p) chng))) prf mn))|#
+
+#|(def nxtmin (chng prf mn)
+  (min (trues (fn (p m)
+                (if (< p m)
+                      (let d (- m p)
+                        (if (> d chng) (- d chng))))) prf mn)))#|
+
+private void layx(Container cnt){
+  Component[] cs = X.vis(cnt);
+  int tgap = tgap(len(cs), gap);
+  int twid = twid(cnt);
+  int[] wids = xwid(cs, twid-tgap, dist);
+  int thei = thei(cnt);
+  int[] heis = xhei(cs, thei);
+  sizall(cs, wids, heis);
+  
+  int[] gaps = gaps(twid-sum(wids), len(cs), gap, alix);
+  Insets iset = cnt.getInsets();
+  int x = iset.left;
+  int y = iset.top;
+  posall(cs, xxs(x, wids, gaps), xys(y, heis, thei, aliy));
+}
+
+
+
+(def lay (cnt)
+  (with (cs (vis cnt)
+         (xs ys ws hs) (bnds axis cnt gap alix aliy dist))
+    (eachs (c cs x xs y ys w ws h hs)
+      (loc x y c)
+      (siz w h c))))
+
+(def bnds (axis cnt gap alix aliy dist)
+  (with (cs (vis cnt)
+         num (len cs)
+         w (wid cnt)
+         h (hei cnt)
+         tgap (totgap num gap)
+         asiz (map sizes cs)
+         awid (map [map gwid _] asiz)
+         ahei (map [map ghei _] asiz)
+         iset (.getInsets cnt)
+         x (. iset left)
+         y (. iset top))
+    (case axis
+      "X" (with (ws (sizdir w awid tgap dist)
+                 hs (sizopp h ahei)
+                 gs (gaps w ws gap alix)
+                 xs (posdir x ws gs)
+                 ys (posopp y h hs aliy))
+            (lis xs ys ws hs))
+      "Y" (with (ws (sizopp w awid)
+                 hs (sizdir h ahei tgap dist)
+                 gs (gaps h hs gap aliy)
+                 xs (posopp x w ws alix)
+                 ys (posdir y hs gs))
+            (lis xs ys ws hs))
+      (err "Invalid axis = $1" axis))))
+
+(def sizes (a) (lis (gmin a) (gprf a) (gmax a)))
+
+(def gmin (a) (.getMinimumSize a))
+(def gprf (a) (.getPreferredSize a))
+(def gmax (a) (.getMaximumSize a))
+
+(def gwid (a) (. a width))
+(def ghei (a) (. a height))
+
+(def siz (w h a) (.setSize a (dim w h)))
+(def loc (x y a) (.setLocation a x y))
+
+(def sizdir (tot asizdir tgap dist)
+  (with (mn (map [_ 0] asizdir)
+         prf (map [_ 1] asizdir)
+         mx (map [_ 2] asizdir))
+    (case dist
+      nil prf
+      'eq (dequ (- tot tgap (apl + prf)) prf mn mx)
+          (err sizdir "Invalid dist = $1" dist))))
+
+(def sizopp (tot asizdir)
+  (map [btw tot (_ 0) (_ 2)] asizdir))
+
+(def posdir (strt ss gs)
+  (sums (+ strt (car gs)) (map + ss (cdr gs))))
+
+(def posopp (strt tot ss ali)
+  (let fl (nali ali)
+    (map [+ strt (tint (* (- tot _) fl))] ss)))
+
+(def gaps (tot ss gp oali)
+  (with (ali (gali oali)
+         space (- tot (apl + ss))
+         num (len ss)
+         tgap (totgap num gp)
+         ext (- space tgap)
+         mids (nof (- num 1) gp))
+     (case ali
+       'fro (bor mids 0 ext)
+       'cen (let (q r) (qr ext 2)
+              (bor mids q (+ q r)))
+       'end (bor mids ext 0)
+       'jus (bor (dequ space (nof (- num 1) 0)) 0 0)
+            (err gaps "Invalid ali = $1" ali))))
+
+(def sums (n a)
+  (nrev (rdc (fn (a x) (cons (+ (car a) x) a))
+             (lis (+ n (car a))) (cdr a))))
+
+(def gali (ali)
+  (case ali
+    'top 'fro
+    'lef 'fro
+    'cen 'cen
+    'bot 'end
+    'rig 'end
+    'jus 'jus
+    ali))
+
+(def totgap (num gap)
+  (if (is num 0) 0
+      (* (- num 1) gap)))
+
+(def bor (a x y)
+  (app (lis x) a (lis y)))
+
+
+
+
+
+
+#|(def layx (cnt)
+  (with (cs (vis cnt)
+         num (len cs)
+         w (wid cnt)
+         h (hei cnt)
+         tgap (totgap num gap)
+         asiz (map sizes cs)
+         ws (sizdir w (map [map gwid _] asiz) tgap dist)
+         hs (sizopp h (map [map ghei _] asiz))
+         
+         iset (.getInsets cnt)
+         x (. iset left)
+         y (. iset top)
+         gs (gaps w ws gap alix)
+         xs (posdir x ws gs)
+         ys (posopp y h hs aliy))
+    (eachs (c cs w ws h hs x xs y ys)
+      (siz w h c)
+      (loc x y c))))|#
+d
+
+
+(def cmpr (f a b)
+  [f (a _) (b _)])
+
+(def pro (n a)
+  (if (no a) nil
+      (with (tot (apl + a)
+             quos (map [/ (* n _) tot] a)
+             rems (map [% (* n _) tot] a)
+             ext (- n (apl + quos)))
+        (dlrem ext quos rems))))
+
+(def dlrem (n a rs)
+  (dequ n a (wchng n rs)))
+
+(def wchng (n rs)
+  (let lim (min (fstn n (sort rs)))
+    (map [>= _ lim] rs)))
