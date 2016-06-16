@@ -3,35 +3,21 @@ import tools.$;
 import java.util.*;
 
 public class Test {
-  public static void main(String[] args) throws NewException {
-    Interf a = new Parent(3);
-    Interf b = new Child(4);
+  static int i = 0;
+  
+  public static void main(String[] args) {
+    Interf a = new Interf(){
+      public void test(){
+        i++;
+      }
+    };
     
+    $.prn(i);
     a.test();
-    b.test();
+    $.prn(i);
   }
 }
 
-class Parent extends Interf {
-  public Parent(int a){
-    $.prn("here" + a);
-  }
-  
-  public void test(){
-    $.prn("Parent");
-  }
-}
-
-class Child extends Parent {
-  public Child(int a){
-    super(a);
-  }
-  
-  public void test(){
-    $.prn("Child");
-  }
-}
-
-abstract class Interf {
-  public abstract void test();
+interface Interf {
+  public void test();
 }
