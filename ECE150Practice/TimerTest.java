@@ -1,19 +1,16 @@
 import tools.$;
 
-import javax.swing.Timer;
-import java.awt.event.*;
-import java.util.Scanner;
+import java.util.*;
 
 public class TimerTest {
   public static void main(String[] args) {
-    ActionListener l = new ActionListener(){
-      public void actionPerformed(ActionEvent evt){
+    TimerTask l = new TimerTask(){
+      public void run(){
         $.prn("whoa");
       }
     };
-    Timer t1 = new Timer(100, l);
-    t1.setRepeats(true);
-    t1.start();
+    Timer t1 = new Timer();
+    t1.schedule(l, 100, 100);
     
     Scanner s = new Scanner(System.in);
     String str;
@@ -23,7 +20,7 @@ public class TimerTest {
     } while (!str.equals("stop"));
     
     $.prn("here");
-    t1.stop();
+    t1.cancel();
     
     $.prn("done?");
   }
