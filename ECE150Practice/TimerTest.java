@@ -10,18 +10,13 @@ public class TimerTest {
       }
     };
     Timer t1 = new Timer();
-    t1.schedule(l, 100, 100);
+    t1.schedule(l, 1, 100);
     
-    Scanner s = new Scanner(System.in);
-    String str;
-    do {
-      str = s.nextLine();
-      $.prn(str);
-    } while (!str.equals("stop"));
+    String a = "";
+    for (int i = 0; i < 323; i++){
+      a += i;
+    }
     
-    $.prn("here");
     t1.cancel();
-    
-    $.prn("done?");
   }
 }
