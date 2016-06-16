@@ -15,10 +15,16 @@ public class TimerTest {
     t1.setRepeats(true);
     t1.start();
     
-    String a = "";
-    for (int i = 0; i < 10000; i++){
-      a += i;
-    }
+    Scanner s = new Scanner(System.in);
+    String str;
+    do {
+      str = s.nextLine();
+      $.prn(str);
+    } while (!str.equals("stop"));
+    
+    $.prn("here");
+    t1.stop();
+    
     $.prn("done?");
   }
 }
