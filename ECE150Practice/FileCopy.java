@@ -7,18 +7,18 @@ public class FileCopy {
   public static void main(String[] args) throws IOException {
     Scanner s = new Scanner(System.in);
   
-    FileInputStream in = null;
-    FileOutputStream out = null;
+    BufferedReader in = null;
+    PrintWriter out = null;
     
     try {
       $.pr("Input file: ");
-      in = new FileInputStream(s.nextLine());
+      in = new BufferedReader(new FileReader(s.nextLine()));
       $.pr("Output file: ");
-      out = new FileOutputStream(s.nextLine());
+      out = new PrintWriter(new FileWriter(s.nextLine()));
       
-      int c;
-      while ((c = in.read()) != -1){
-        out.write(c);
+      String l;
+      while ((l = in.readLine()) != null){
+        out.println(l);
       }
     } finally {
       if (in != null)in.close();
