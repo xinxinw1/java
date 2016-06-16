@@ -1,8 +1,17 @@
 import tools.$;
 
+import java.util.*;
+
 public class Test {
   public static void main(String[] args){
-    new Child().test();
+    ArrayList<Integer> a = new ArrayList<>();
+    a.add(3);
+    a.add(5);
+    for (int i = 0; i < 20; i++){
+      a.add(i);
+    }
+    a.get(0);
+    $.prn(a.size());
   }
 }
 
