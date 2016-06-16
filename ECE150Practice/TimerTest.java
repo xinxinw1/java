@@ -1,16 +1,18 @@
 import tools.$;
 
 import java.util.*;
+import javax.swing.Timer;
+import java.awt.event.*;
 
 public class TimerTest {
   static String test = "";
   public static void main(String[] args) {
-    TimerTask l1 = new TimerTask(){
-      public void run(){
+    ActionListener l1 = new ActionListener(){
+      public void actionPerformed(ActionEvent evt){
         $.prn("start 1 " + test);
         String local = test;
         String a = "";
-        for (int i = 0; i < 500; i++){
+        for (int i = 0; i < 20000; i++){
           a += i;
         }
         test = local + "1";
@@ -18,8 +20,8 @@ public class TimerTest {
       }
     };
     
-    TimerTask l2 = new TimerTask(){
-      public void run(){
+    ActionListener l2 = new ActionListener(){
+      public void actionPerformed(ActionEvent evt){
         $.prn("start 2 " + test);
         String local = test;
         String a = "";
@@ -30,10 +32,14 @@ public class TimerTest {
         $.prn("end 2 " + test);
       }
     };
-    Timer t1 = new Timer();
-    t1.schedule(l1, 100, 100);
+    Timer t1 = new Timer(100, l1);
+    t1.setRepeats(true);
+    t1.start();
     
-    Timer t2 = new Timer();
-    t2.schedule(l2, 100, 100);
+    Timer t2 = new Timer(100, l2);
+    t2.setRepeats(true);
+    t2.start();
+    
+    while (true);
   }
 }
