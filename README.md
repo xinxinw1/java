@@ -1,5 +1,9 @@
 # Xin-Xin's Java Stuff
 
+## Run code
+
+`$ cmpjava Default Test`
+
 ## Get Libraries
 
 ### DJ NativeSwing
