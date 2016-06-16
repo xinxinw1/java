@@ -2,6 +2,7 @@ import tools.$;
 
 import javax.swing.Timer;
 import java.awt.event.*;
+import java.util.Scanner;
 
 public class TimerTest {
   public static void main(String[] args) {
@@ -10,13 +11,14 @@ public class TimerTest {
         $.prn("whoa");
       }
     };
-    Timer t1 = new Timer(0, l);
-    t1.setRepeats(false);
+    Timer t1 = new Timer(100, l);
+    t1.setRepeats(true);
     t1.start();
     
     String a = "";
-    for (int i = 0; i < 5000; i++){
+    for (int i = 0; i < 10000; i++){
       a += i;
     }
+    $.prn("done?");
   }
 }
