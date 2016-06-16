@@ -10,13 +10,6 @@ public class TimerTest {
       }
     };
     Timer t1 = new Timer();
-    t1.schedule(l, 1, 100);
-    
-    String a = "";
-    for (int i = 0; i < 323; i++){
-      a += i;
-    }
-    
-    t1.cancel();
+    t1.schedule(l, 100);
   }
 }
