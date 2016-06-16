@@ -3,8 +3,8 @@ import tools.$;
 import java.util.*;
 
 public class Test {
-  public static void main(String[] args){
-    $.prn(test());
+  public static void main(String[] args) throws NewException {
+    $.prn(test2());
   }
   
   public static int test(){
@@ -30,6 +30,10 @@ public class Test {
       $.prn("here");
       //return 5;
     }
+  }
+  
+  public static int test2() throws NewException {
+    throw new NewException("hey");
   }
 }
 
