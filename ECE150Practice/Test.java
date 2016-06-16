@@ -4,37 +4,30 @@ import java.util.*;
 
 public class Test {
   public static void main(String[] args) throws NewException {
-    Interf p = new Parent() {
-      public void test(){
-        $.prn("here");
-      }
-      
-      public int whoa(){
-        return 3;
-      }
-    };
+    Interf a = new Parent();
+    Interf b = new Child();
     
-    p.test();
-    
-    $.prn(((Parent) p).whoa);
-    ((Parent) p).whoa = 66;
-    $.prn(((Parent) p).whoa);
-    $.prn(((Parent) p).hey);
+    a.test();
+    b.test();
   }
 }
 
-abstract class Parent implements Interf {
-  public int whoa = 3;
-  static public final int hey = 4;
-
+class Parent implements Interf {
   public Parent(){
     $.prn("here");
   }
   
-  public abstract void test();
+  public void test(){
+    $.prn("Parent");
+  }
+}
+
+class Child extends Parent {
+  public void test(){
+    $.prn("Child");
+  }
 }
 
 interface Interf {
   public void test();
-  public int whoa();
 }
