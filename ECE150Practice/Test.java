@@ -4,17 +4,17 @@ import java.util.*;
 
 public class Test {
   public static void main(String[] args) throws NewException {
-    Interf a = new Parent();
-    Interf b = new Child();
+    Interf a = new Parent(3);
+    Interf b = new Child(4);
     
     a.test();
     b.test();
   }
 }
 
-class Parent implements Interf {
-  public Parent(){
-    $.prn("here");
+class Parent extends Interf {
+  public Parent(int a){
+    $.prn("here" + a);
   }
   
   public void test(){
@@ -23,11 +23,15 @@ class Parent implements Interf {
 }
 
 class Child extends Parent {
+  public Child(int a){
+    super(a);
+  }
+  
   public void test(){
     $.prn("Child");
   }
 }
 
-interface Interf {
-  public void test();
+abstract class Interf {
+  public abstract void test();
 }
