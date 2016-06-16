@@ -1,0 +1,75 @@
+#!/bin/bash
+
+cs="/srv/git/java/"
+err=
+
+function cmp {
+  if ls $1/*.java &> /dev/null; then
+    javac -Xlint:unchecked -cp ./:$cs/General/ $1/*.java
+  fi
+  
+  if [ $? -ne 0 ]; then
+    err="true"
+    echo
+  fi
+}
+
+
+function dirs {
+  local v
+  if [ ! -n "$2" ]; then
+    v=./
+  else
+    v=$2
+  fi
+  
+  if [ "${v:${#v}-4}" == ".nc/" ]; then
+    return 0
+  fi
+  
+  echo Dir: $v
+  $1 $v
+  
+  while read i; do
+    dirs $1 "$i"
+  done < <(ls -1 -d "$v"*/ 2> /dev/null)
+}
+
+if [ -d "$1" ]; then
+  cd $1
+  
+  echo Compiling \"$1\"
+  echo -------------------------------------------------------------------------------
+  dirs cmp
+  
+  if [ -n "$2" ]; then
+    if [ ! -n "$err" ]; then
+      echo
+      echo
+      
+      echo Running \"$2\"
+      echo -------------------------------------------------------------------------------
+      java -cp ./:$cs/General/ $2
+    else
+      err=
+    fi
+  fi
+  
+  cd $cs
+else
+  echo Error: directory \"$1\" doesn\'t exist
+fi
+
+#http://stackoverflow.com/questions/13408493/bash-an-and-operator-for-if-statment
+#http://www.thegeekstuff.com/2010/06/bash-if-statement-examples/
+#http://stackoverflow.com/questions/9639103/is-there-a-goto-statement-in-bash
+#http://stackoverflow.com/questions/6363441/check-if-a-file-exists-with-wildcard-in-shell-script
+#http://www.tldp.org/LDP/abs/html/localvar.html
+#http://timmurphy.org/2012/06/07/get-the-last-n-characters-of-a-string-in-bash/
+#http://stackoverflow.com/questions/2237080/how-to-compare-strings-in-bash-script
+#http://stackoverflow.com/questions/4419952/difference-between-return-and-exit-in-bash-functions
+#http://stackoverflow.com/questions/2711001/how-to-apply-shell-command-to-each-line-of-a-command-output
+#http://stackoverflow.com/questions/14219092/bash-my-script-bin-bashm-bad-interpreter-no-such-file-or-directory
+#http://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html
+#http://stackoverflow.com/questions/6662915/bash-global-variables-arent-updateable-in-a-function-only-when-that-function-i
+#http://stackoverflow.com/questions/14352290/listing-only-directory-using-ls-in-bash

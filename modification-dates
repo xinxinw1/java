@@ -1,0 +1,78 @@
+$ date '+%c'
+Thu 16 Jun 2016 03:21:42 PM EDT
+
+$ ls -lAR --time-style='+%c'
+.:
+total 296
+-rwxr-xr-x  1 secret2008 secret2008   2090 Fri 02 Oct 2015 06:11:53 PM EDT cmp
+drwxr-xr-x  2 secret2008 secret2008   4096 Fri 02 Oct 2015 06:17:06 PM EDT Default
+-rwxr-xr-x  1 secret2008 secret2008    444 Fri 02 Oct 2015 06:11:38 PM EDT envir
+-rwxr-xr-x  1 secret2008 secret2008    451 Fri 02 Oct 2015 06:11:10 PM EDT envir.desktop
+drwxr-xr-x 10 secret2008 secret2008   4096 Fri 02 Oct 2015 06:11:04 PM EDT General
+drwxr-xr-x  5 secret2008 secret2008   4096 Thu 16 Jun 2016 03:21:31 PM EDT GUITest
+
+./Default:
+total 8
+-rw-r--r-- 1 secret2008 secret2008 107 Fri 02 Oct 2015 06:14:14 PM EDT Test.java
+
+./General:
+total 5572
+drwxr-xr-x 2 secret2008 secret2008    4096 Thu 16 Jun 2016 03:07:02 PM EDT gui
+drwxr-xr-x 2 secret2008 secret2008    4096 Mon 06 Jun 2016 10:56:33 AM EDT tools
+
+./General/tools:
+total 68
+-rw-r--r-- 1 secret2008 secret2008  3145 Fri 02 Oct 2015 06:13:33 PM EDT Cons.java
+-rw-r--r-- 1 secret2008 secret2008 41888 Fri 02 Oct 2015 06:13:32 PM EDT $.java
+-rw-r--r-- 1 secret2008 secret2008   674 Mon 06 Jun 2016 10:56:33 AM EDT modification-dates
+-rw-r--r-- 1 secret2008 secret2008   940 Fri 02 Oct 2015 06:13:35 PM EDT Regex.java
+-rw-r--r-- 1 secret2008 secret2008   123 Fri 02 Oct 2015 06:13:37 PM EDT Rn.java
+-rw-r--r-- 1 secret2008 secret2008   911 Fri 02 Oct 2015 06:13:38 PM EDT Table.java
+-rw-r--r-- 1 secret2008 secret2008   712 Fri 02 Oct 2015 06:13:40 PM EDT Xarr.java
+
+./GUITest:
+total 876
+-rw-r--r-- 1 secret2008 secret2008    464 Fri 02 Oct 2015 06:11:09 PM EDT Browser.java
+-rw-r--r-- 1 secret2008 secret2008    439 Fri 02 Oct 2015 06:11:11 PM EDT Calc.java
+-rw-r--r-- 1 secret2008 secret2008   1270 Fri 02 Oct 2015 06:11:15 PM EDT DropDown.java
+-rw-r--r-- 1 secret2008 secret2008    351 Fri 02 Oct 2015 06:11:17 PM EDT HelloWorld.java
+-rw-r--r-- 1 secret2008 secret2008   2724 Fri 02 Oct 2015 06:11:23 PM EDT Layers.java
+-rw-r--r-- 1 secret2008 secret2008 663521 Fri 02 Oct 2015 06:11:49 PM EDT male-elk.jpg
+-rw-r--r-- 1 secret2008 secret2008 159787 Fri 02 Oct 2015 06:11:50 PM EDT math.jpg
+-rw-r--r-- 1 secret2008 secret2008    665 Fri 02 Oct 2015 06:11:25 PM EDT MorePanels.java
+drwxr-xr-x 2 secret2008 secret2008   4096 Fri 02 Oct 2015 06:13:47 PM EDT old.nc
+-rw-r--r-- 1 secret2008 secret2008    445 Fri 02 Oct 2015 06:11:27 PM EDT OnePanel.java
+-rw-r--r-- 1 secret2008 secret2008   2203 Fri 02 Oct 2015 06:11:29 PM EDT PageNew.java
+-rw-r--r-- 1 secret2008 secret2008   1156 Fri 02 Oct 2015 06:11:32 PM EDT PanelAdv.java
+-rw-r--r-- 1 secret2008 secret2008    854 Fri 02 Oct 2015 06:11:34 PM EDT PanelProps.java
+-rw-r--r-- 1 secret2008 secret2008   2110 Fri 02 Oct 2015 06:11:36 PM EDT Panels.java
+-rw-r--r-- 1 secret2008 secret2008   3301 Fri 02 Oct 2015 06:11:39 PM EDT Quiz.java
+-rw-r--r-- 1 secret2008 secret2008   3468 Fri 02 Oct 2015 06:11:45 PM EDT Test.java
+drwxr-xr-x 2 secret2008 secret2008   4096 Fri 02 Oct 2015 06:13:59 PM EDT test.nc
+-rw-r--r-- 1 secret2008 secret2008    507 Fri 02 Oct 2015 06:11:47 PM EDT TestNew.java
+
+./GUITest/old.nc:
+total 56
+-rw-r--r-- 1 secret2008 secret2008  4302 Fri 02 Oct 2015 06:13:41 PM EDT AxisLayoutSimp.java
+-rw-r--r-- 1 secret2008 secret2008  5112 Fri 02 Oct 2015 06:13:42 PM EDT BLDComponent.java
+-rw-r--r-- 1 secret2008 secret2008   425 Fri 02 Oct 2015 06:13:43 PM EDT FrameTest.java
+-rw-r--r-- 1 secret2008 secret2008  4562 Fri 02 Oct 2015 06:13:44 PM EDT Page.java
+-rw-r--r-- 1 secret2008 secret2008  3739 Fri 02 Oct 2015 06:13:45 PM EDT Quiz2.java
+-rw-r--r-- 1 secret2008 secret2008  2983 Fri 02 Oct 2015 06:13:45 PM EDT Quiz.java
+-rw-r--r-- 1 secret2008 secret2008 11500 Fri 02 Oct 2015 06:13:46 PM EDT RelativeLayout.java
+-rw-r--r-- 1 secret2008 secret2008  1439 Fri 02 Oct 2015 06:13:47 PM EDT TestSimp.java
+-rw-r--r-- 1 secret2008 secret2008   478 Fri 02 Oct 2015 06:13:47 PM EDT TestWeb.java
+
+./GUITest/test.nc:
+total 88
+-rw-r--r-- 1 secret2008 secret2008 6870 Fri 02 Oct 2015 06:13:49 PM EDT BoxBug2.png
+-rw-r--r-- 1 secret2008 secret2008 6870 Fri 02 Oct 2015 06:13:50 PM EDT BoxBug3.png
+-rw-r--r-- 1 secret2008 secret2008 1299 Fri 02 Oct 2015 06:13:48 PM EDT BoxBug.java
+-rw-r--r-- 1 secret2008 secret2008 6877 Fri 02 Oct 2015 06:13:49 PM EDT BoxBug.png
+-rw-r--r-- 1 secret2008 secret2008  622 Fri 02 Oct 2015 06:13:51 PM EDT ButTest.java
+-rw-r--r-- 1 secret2008 secret2008 2342 Fri 02 Oct 2015 06:13:51 PM EDT LayerBug.java
+-rw-r--r-- 1 secret2008 secret2008 4472 Fri 02 Oct 2015 06:13:52 PM EDT Page.java
+-rw-r--r-- 1 secret2008 secret2008 2235 Fri 02 Oct 2015 06:13:53 PM EDT PageNew.stysplit.java
+-rw-r--r-- 1 secret2008 secret2008  650 Fri 02 Oct 2015 06:13:53 PM EDT Scroll.java
+-rw-r--r-- 1 secret2008 secret2008 1681 Fri 02 Oct 2015 06:13:57 PM EDT Test.2014.04.03.21.22.java
+-rw-r--r-- 1 secret2008 secret2008 2590 Fri 02 Oct 2015 06:13:59 PM EDT Test.java
