@@ -20,3 +20,9 @@
 
 1. Download jna.jar from https://github.com/java-native-access/jna
 2. Save in General
+
+### JUnit
+
+1. Download jars from https://github.com/junit-team/junit4/wiki/Download-and-Install
+2. Save in General
+
