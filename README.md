@@ -4,6 +4,10 @@
 
 `$ cmpjava Default Test`
 
+## Run tests
+
+`$ testjava Default Test`
+
 ## Get Libraries
 
 ### DJ NativeSwing

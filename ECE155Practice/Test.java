@@ -6,19 +6,10 @@ public class Test {
   int i = 0;
   
   public static void main(String[] args) {
-    new Test().main2();
-  }
-  
-  public void main2(){
-    Interf a = new Interf(){
-      public void test(){
-        i++;
-      }
-    };
-    
-    $.prn(i);
-    a.test();
-    $.prn(i);
+    int r = 0;
+    double r2 = Math.log(-1);
+    boolean r3 = r2 == 0;
+    System.out.println(r3);
   }
 }
 
